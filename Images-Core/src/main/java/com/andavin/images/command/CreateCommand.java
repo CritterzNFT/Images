@@ -272,7 +272,7 @@ final class CreateCommand extends BaseCommand implements Listener {
                     }
                     player.sendMessage(ChatColor.YELLOW + "Attempting to mint NFT..");
 
-                    CustomImage customImage = new CustomImage(player.getUniqueId(), task.contract, -1, task.tokenId,
+                    CustomImage customImage = new CustomImage(player.getUniqueId(), task.contract, task.tokenId,
                             task.nameSupplier.get(), location, direction, image);
 
                     for (CustomImageSection section : customImage.getSections()) {

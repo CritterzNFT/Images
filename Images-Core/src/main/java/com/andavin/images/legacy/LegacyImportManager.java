@@ -116,7 +116,7 @@ public final class LegacyImportManager {
 
                 Logger.info("Importing legacy image {} facing {}...", file.getName(), direction);
                 try {
-                    CustomImage image = new CustomImage(file.getName(), "", -1, BigInteger.valueOf(-1), legacyImage.getLocation(),
+                    CustomImage image = new CustomImage(file.getName(), "", BigInteger.valueOf(-1), legacyImage.getLocation(),
                             direction, ImageIO.read(file));
                     dataManager.save(image);
                     importedImages.add(image);

@@ -68,14 +68,14 @@ public class CustomImage implements Serializable {
     private final BlockFace direction;
     private final Map<Integer, CustomImageSection> sections = new HashMap<>();
 
-    public CustomImage(String imageName, String contract, int tokenId, BigInteger newTokenId, Location location, BlockFace direction, BufferedImage image) {
-        this(UNKNOWN_CREATOR, contract, tokenId, newTokenId, imageName, location, direction, image);
+    public CustomImage(String imageName, String contract, BigInteger newTokenId, Location location, BlockFace direction, BufferedImage image) {
+        this(UNKNOWN_CREATOR, contract, newTokenId, imageName, location, direction, image);
     }
 
-    public CustomImage(UUID creator, String contract, int tokenId, BigInteger newTokenId, String imageName, Location location,
+    public CustomImage(UUID creator, String contract, BigInteger newTokenId, String imageName, Location location,
                        BlockFace direction, BufferedImage image) {
         this.contract = contract;
-        this.tokenId = tokenId;
+        this.tokenId = -1;
         this.newTokenId = newTokenId;
         this.imageName = imageName;
         this.direction = direction;
