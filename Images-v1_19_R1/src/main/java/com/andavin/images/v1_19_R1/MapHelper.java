@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package com.andavin.images.v1_18_R1;
+package com.andavin.images.v1_19_R1;
 
 import com.andavin.reflect.FieldMatcher;
 import net.minecraft.core.BlockPos;
@@ -31,7 +31,6 @@ import net.minecraft.network.protocol.game.ClientboundRemoveEntitiesPacket;
 import net.minecraft.network.protocol.game.ClientboundSetEntityDataPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -39,9 +38,9 @@ import net.minecraft.world.level.saveddata.maps.MapItemSavedData.MapPatch;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.BlockFace;
-import org.bukkit.craftbukkit.v1_18_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_18_R1.block.CraftBlock;
-import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_19_R1.block.CraftBlock;
+import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.map.MapPalette;
 import org.bukkit.map.MapView;
@@ -102,8 +101,7 @@ class MapHelper extends com.andavin.images.MapHelper {
         }
 
         ServerGamePacketListenerImpl connection = ((CraftPlayer) player).getHandle().connection;
-        connection.send(new ClientboundAddEntityPacket(frame, EntityType.ITEM_FRAME,
-                frame.getDirection().get3DDataValue(), frame.getPos()));
+        connection.send(new ClientboundAddEntityPacket(frame, frame.getDirection().get3DDataValue(), frame.getPos()));
         connection.send(new ClientboundSetEntityDataPacket(frame.getId(), frame.getEntityData(), true));
         connection.send(new ClientboundMapItemDataPacket(mapId, (byte) 3, false,
                 emptyList(), new MapPatch(0, 0, 128, 128, pixels)));
